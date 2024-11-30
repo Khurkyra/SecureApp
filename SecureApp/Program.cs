@@ -39,14 +39,15 @@ builder.Services.Configure<IpRateLimitOptions>(options =>
     };
 });
 
-// Configuración de CORS
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", policy =>
-        policy.WithOrigins("https://tu-dominio.com", "https://otro-dominio.com")
+        policy.AllowAnyOrigin()  // Permite cualquier origen (solo para desarrollo)
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
+
 
 // Configuración de Swagger/OpenAPI
 builder.Services.AddControllers();
@@ -78,10 +79,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
 // Middleware de CORS
 app.UseCors("AllowSpecificOrigins");
+
+app.UseHttpsRedirection();
 
 // Middleware de límites de solicitudes
 app.UseIpRateLimiting();

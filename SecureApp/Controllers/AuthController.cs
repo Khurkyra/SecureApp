@@ -26,6 +26,13 @@ namespace SecureApp.Controllers
             _logger = logger;
         }
 
+        [HttpGet("prueba")] // Puedes agregar una ruta personalizada si lo deseas
+        public async Task<string> Prueba()
+        {
+            return "hola";
+        }
+
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserDto userDto)
         {
