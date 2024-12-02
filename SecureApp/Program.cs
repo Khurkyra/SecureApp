@@ -43,7 +43,7 @@ builder.Services.Configure<IpRateLimitOptions>(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", policy =>
-        policy.WithOrigins("https://chascamain.freemyip.com") 
+        policy.WithOrigins("https://chascamain.shop/'") 
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials()); // Permite cookies/autenticación
